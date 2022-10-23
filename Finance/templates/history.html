@@ -1,0 +1,40 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Stock Quote
+{% endblock %}
+
+{% block main %}
+    <div class="container">
+        <h1><strong>CURRENT CASH</strong> = ${{ cash|round(2) }}</h1>
+        <p></p>
+        <table class="table">
+            <tr>
+                <th>Stock Symbol</th>
+                <th>Trans Type</th>
+                <th>Qty. of Shares</th>
+                <th>Share Price</th>
+                <th>Total</th>
+                <th>Date</th>
+            </tr>
+            {% for transactions in transactions %}
+                <tr>
+                    <td>{{ transactions['symbol'].upper() }}</td>
+                    <td>{{ transactions['trans_type']}}</td>
+                    <td>{{ transactions['share'] }}</td>
+                    <td>${{ transactions['price'] }}</td>
+                    <td>${{ transactions['total']|round(2) }}</td>
+                    <td>{{ transactions['trans_date'] }}</td>
+                </tr>
+            {% endfor %}
+            <tr>
+                <td><strong>TOTAL</strong></td>
+                <td></td>
+                <td></td>
+                <td>${{ total|round(2) }}</td>
+                <td></td>
+            </tr>
+        </table>
+    </div>
+    <script src="{{url_for('static', filename='button.js')}}"></script>
+{% endblock %}

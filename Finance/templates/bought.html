@@ -1,0 +1,31 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Transaction Complete
+{% endblock %}
+
+{% block main %}
+<p> {{ quote }} </p>
+    <div class="container">
+        <table class="table">
+            <tr>
+                <th>Stock Symbol</th>
+                <th>Company</th>
+                <th>Shares</th>
+                <th>Share Price</th>
+                <th>Total Price</th>
+                <th>Date</th>
+                
+            </tr>
+            <tr>
+                <td>{{ transaction['symbol'] }}</td>
+                <td>{{ transaction['company'] }}</td>
+                <td>{{ transaction['shares'] }}</td>
+                <td>${{ transaction['price'] }}</td>
+                <td>${{ transaction['cost'] }}</td>
+                <td>{{ transaction['date'] }}</td>
+                
+            </tr>
+        </table>
+    </div>
+{% endblock %}
